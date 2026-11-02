@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Manager</title>
+<style>
+  :root { --ink:#1c2a33; --paper:#f7f9fa; --line:#cfd8dc; --accent:#0b6e8a; --done:#5c7a6b; --err:#b3261e; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, "Times New Roman", serif; background: var(--paper); color: var(--ink); max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; line-height: 1.5; }
+  h1 { font-size: 2rem; margin: 0 0 .25rem; }
+  .meta { margin: 0 0 1.5rem; color: #546e7a; }
+  form { display: grid; gap: .5rem; padding: 1rem; border: 1px solid var(--line); background: #fff; }
+  input { font: inherit; padding: .5rem; border: 1px solid var(--line); }
+  button { font: inherit; padding: .4rem .8rem; border: 1px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; }
+  button:hover { background: #eceff1; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  #task-submit { background: var(--accent); border-color: var(--accent); color: #fff; justify-self: start; }
+  #status-message { min-height: 1.5rem; margin: .75rem 0; }
+  #status-message.error { color: var(--err); font-weight: bold; }
+  #task-list { display: grid; gap: .75rem; }
+  .task-item { border: 1px solid var(--line); border-left: 6px solid var(--accent); background: #fff; padding: .75rem 1rem; }
+  .task-item.done { border-left-color: var(--done); }
+  .task-item.done .task-title { text-decoration: line-through; color: #78909c; }
+  .task-title { font-weight: bold; font-size: 1.1rem; margin: 0; }
+  .task-description { margin: .25rem 0; }
+  .task-status { font-size: .9rem; color: #546e7a; margin: 0 0 .5rem; }
+  .actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .empty { color: #546e7a; }
+</style>
+</head>
+<body>
+  <h1>Task Manager</h1>
+  <p class="meta">Student ID: <span id="student-id">73166</span> &middot; <a id="contribution-link" href="contribution.html">Team contribution</a></p>
+
+  <form id="task-form">
+    <input id="task-title" type="text" placeholder="Task title" required>
+    <input id="task-description" type="text" placeholder="Description (optional)">
+    <button id="task-submit" type="submit">Add task</button>
+  </form>
+
+  <div id="status-message" role="status" aria-live="polite"></div>
+  <div id="task-list"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
